@@ -43,6 +43,7 @@ class Search extends React.Component {
       loading: false,
       albumList,
     });
+    console.log(albumList);
     if (albumList.length === 0) {
       this.setState({
         albumListEmpty: true,
