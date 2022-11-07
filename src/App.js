@@ -5,7 +5,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <p>TrybeTunes</p>
+        <p>Trybe-Tunes</p>
         <Routes />
       </>
     );

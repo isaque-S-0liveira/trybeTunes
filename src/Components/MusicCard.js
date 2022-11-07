@@ -9,7 +9,6 @@ class MusicCard extends React.Component {
     this.state = {
       loading: false,
       favorite: false,
-      trackIdInput: '',
     };
   }
 
@@ -20,7 +19,7 @@ class MusicCard extends React.Component {
   handleChange = async (event) => {
     const { id, checked } = event.target;
     const { songList } = this.props;
-    this.setState({ loading: true }, () => this.setState({ trackIdInput: id }));
+    this.setState({ loading: true });
     const song = songList.find((son) => son.trackId === Number(id));
     await addSong(song);
     this.setState({ loading: false });
@@ -30,7 +29,6 @@ class MusicCard extends React.Component {
   };
 
   getFavorites = async () => {
-    const { trackIdInput } = this.state;
     const { trackId } = this.props;
     const favoriteSongs = await getFavoriteSongs();
     const haveFav = favoriteSongs.some((id) => id.trackId === trackId);
@@ -79,6 +77,9 @@ class MusicCard extends React.Component {
 }
 
 MusicCard.propTypes = {
+  songList: PropTypes.arrayOf(PropTypes.shape({
+    trackId: PropTypes.number,
+  })).isRequired,
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
