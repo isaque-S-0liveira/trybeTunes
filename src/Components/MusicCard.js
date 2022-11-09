@@ -16,7 +16,7 @@ class MusicCard extends React.Component {
     this.getFavorites();
   }
 
-  removeFavorites = async() => {
+  removeFavorites = async () => {
     const { songList } = this.props;
     await removeSong(songList);
   };
